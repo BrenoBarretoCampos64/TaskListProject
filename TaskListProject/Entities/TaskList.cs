@@ -1,11 +1,10 @@
 ﻿using TaskListProject.Exceptions;
 
-namespace TaskListProject.Entities.TaskRelated
+namespace TaskListProject.Entities
 {
     internal class TaskList
     {
         public int NumberOfTasks { get; set; }
-
         private List<Task> _tasks = new List<Task>();
 
         public TaskList()
@@ -66,6 +65,7 @@ namespace TaskListProject.Entities.TaskRelated
                     return task;
                 }
             }
+
             throw new TaskException("   [ TASK NUMBER NOT FOUND IN TASK LIST ]");
         }
 
@@ -76,10 +76,10 @@ namespace TaskListProject.Entities.TaskRelated
 
         public void GenerateSampleTasks()
         {
-			AddTask(new Title("Clean the house"), new Description("Use the vacuum cleaner on the carpets"), true, DateTime.Now.AddDays(1));
-			AddTask(new Title("Finish essay"), new Description("The english essay must have at least 20 lines"), true, DateTime.Now.AddDays(2));
-			AddTask(new Title("Medical appointment"), new Description("Annual medical checkup"), true, DateTime.Now.AddDays(7));
-			AddTask(new Title("Visit friend"), new Description("Spare some time to visit your best friend"), false, DateTime.Now.AddMonths(1));
-		}
+            AddTask(new Title("Clean the house"), new Description("Use the vacuum cleaner on the carpets"), true, DateTime.Now.AddDays(1));
+            AddTask(new Title("Finish essay"), new Description("The english essay must have at least 20 lines"), true, DateTime.Now.AddDays(2));
+            AddTask(new Title("Medical appointment"), new Description("Annual medical checkup"), true, DateTime.Now.AddDays(7));
+            AddTask(new Title("Visit friend"), new Description("Spare some time to visit your best friend"), false, DateTime.Now.AddMonths(1));
+        }
     }
 }

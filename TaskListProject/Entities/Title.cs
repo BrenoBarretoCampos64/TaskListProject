@@ -1,15 +1,15 @@
-﻿namespace TaskListProject.Entities.TaskRelated
+﻿namespace TaskListProject.Entities
 {
-    internal class Description
+    internal class Title
     {
         public string? Content { get; set; }
-        public static int DescriptionMaximumLength { get; set; } = 108;
+        public static int TitleMaximumLength { get; set; } = 55;
 
-        public Description()
+        public Title()
         {
         }
 
-        public Description(string? content)
+        public Title(string content)
         {
             Content = content;
         }

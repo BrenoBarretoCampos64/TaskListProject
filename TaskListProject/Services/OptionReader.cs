@@ -1,8 +1,8 @@
 ﻿using TaskListProject.Exceptions;
-using TaskListProject.Entities.TaskRelated;
 using TaskListProject.UI;
+using TaskListProject.Entities;
 
-namespace TaskListProject.Entities
+namespace TaskListProject.Services
 {
     internal class OptionReader
     {

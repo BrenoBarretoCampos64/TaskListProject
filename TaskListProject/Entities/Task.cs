@@ -1,6 +1,6 @@
 ﻿using TaskListProject.Services;
 
-namespace TaskListProject.Entities.TaskRelated
+namespace TaskListProject.Entities
 {
     internal class Task
     {
@@ -30,23 +30,23 @@ namespace TaskListProject.Entities.TaskRelated
             Deadline = deadline;
         }
 
-		public Task(
-            int number, Title title, Description description, bool isFinished, 
+        public Task(
+            int number, Title title, Description description, bool isFinished,
             bool hasDeadline, DateTime deadline, DateTime creationDate)
-		{
-			CheckTitleAndDescription(title, description);
-			CheckDeadline(hasDeadline, deadline);
+        {
+            CheckTitleAndDescription(title, description);
+            CheckDeadline(hasDeadline, deadline);
 
-			Number = number;
-			IsFinished = isFinished;
-			Title = title;
-			Description = description;
-			CreationDate = creationDate;
-			HasDeadline = hasDeadline;
-			Deadline = deadline;
-		}
+            Number = number;
+            IsFinished = isFinished;
+            Title = title;
+            Description = description;
+            CreationDate = creationDate;
+            HasDeadline = hasDeadline;
+            Deadline = deadline;
+        }
 
-		public void CheckTitleAndDescription(Title title, Description description)
+        public void CheckTitleAndDescription(Title title, Description description)
         {
             if (title.Content != "")
             {
@@ -57,15 +57,15 @@ namespace TaskListProject.Entities.TaskRelated
                 title.Content = "No title";
             }
 
-			if (description.Content != "")
-			{
-				TaskInputValidator.ValidateTaskDescription(description);
-			}
+            if (description.Content != "")
+            {
+                TaskInputValidator.ValidateTaskDescription(description);
+            }
             else
             {
-				description.Content = "No description";
-			}
-		}
+                description.Content = "No description";
+            }
+        }
 
         public void CheckDeadline(bool hasDeadline, DateTime deadline)
         {
