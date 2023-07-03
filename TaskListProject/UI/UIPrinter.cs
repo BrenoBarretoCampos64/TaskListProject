@@ -98,30 +98,27 @@ namespace TaskListProject.UI
 		{
 			Console.Clear();
 			Console.WriteLine();
-			Console.WriteLine("   { VIEWING TASK " + task.Number + " }");
+
+            Console.WriteLine("   " + task.Title);
+            Console.WriteLine();
+
+            Console.WriteLine("   " + task.Description);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("   [ VIEWING TASK " + task.Number + " ]");
 			Console.WriteLine();
 
-			ChangeColorsBasedIfFinished(task.IsFinished);
-
-			Console.WriteLine("   " + task.Title);
+            Console.WriteLine("   [ DATE OF CREATION: " + task.CreationDate + " ]");
 			Console.WriteLine();
 
-			Console.WriteLine("   " + task.Description);
-			Console.WriteLine();
+            PrintIfHasDeadline(task, task.IsFinished, task.HasDeadline);
 
-			Console.WriteLine("   [ DATE OF CREATION: " + task.CreationDate + " ]");
-			Console.WriteLine();
+            PrintFinishedOrUnfinished(task.IsFinished);
+            Console.ReadKey();
+        }
 
-			PrintFinishedOrUnfinished(task.IsFinished);
-			Console.WriteLine();
-
-			PrintIfHasDeadline(task, task.IsFinished, task.HasDeadline);
-			Console.ReadKey();
-
-			TextColorChanger.ChangeTextColorToWhite();
-		}
-
-		public static void ChangeColorsBasedIfFinished(bool IsFinished)
+        public static void ChangeColorsBasedIfFinished(bool IsFinished)
 		{
 			if (IsFinished)
 			{
@@ -138,28 +135,24 @@ namespace TaskListProject.UI
 		{
 			if (isTaskFinished)
 			{
-				Console.Write("   [ THIS TASK IS ");
+                TextColorChanger.ChangeTextColorToCyan();
+                Console.Write("   [ THIS TASK IS ");
 				Console.WriteLine("FINISHED ]");
 			}
 			else
 			{
-				Console.Write("   [ THIS TASK IS ");
+                TextColorChanger.ChangeTextColorToYellow();
+                Console.Write("   [ THIS TASK IS ");
 				Console.WriteLine("UNFINISHED ]");
 			}
-		}
+            TextColorChanger.ChangeTextColorToWhite();
+        }
 
 		public static void PrintIfHasDeadline(Task task, bool isFinished, bool hasDeadline)
 		{
 			if (hasDeadline)
 			{
-				if (isFinished)
-				{
-					Console.WriteLine(task.GetRemainingDaysToDeadline());
-				}
-				else
-				{
-					Console.WriteLine(task.GetRemainingDaysToDeadline());
-				}
+                Console.WriteLine(task.GetRemainingDaysToDeadline());
 				Console.WriteLine();
 			}
 		}
@@ -276,7 +269,7 @@ namespace TaskListProject.UI
 		{
 			Console.Clear();
 			Console.WriteLine();
-			Console.WriteLine("   { EDITING TASK " + task.Number + " }");
+			Console.WriteLine("   [ EDITING TASK " + task.Number + " ]");
 			Console.WriteLine();
 			Console.WriteLine("   [ TASK TO BE EDITED ]");
 			Console.WriteLine("   > " + task.Title.Content);
@@ -395,7 +388,7 @@ namespace TaskListProject.UI
 				{
 					Console.Clear();
 					Console.WriteLine();
-					Console.WriteLine("   { ADD TASK }");
+					Console.WriteLine("   [ ADD TASK ]");
 					Title title = PrintGetTitleWindow();
 					Description description = PrintGetDescriptionWindow();
 					bool hasDeadline = false;
@@ -533,11 +526,11 @@ namespace TaskListProject.UI
 		{
 			TextColorChanger.ChangeTextColorToYellow();
 			Console.WriteLine();
-			Console.WriteLine("No task database found.");
-			Console.WriteLine("Sample tasks will be generated.");
+			Console.WriteLine(" No task database found.");
+			Console.WriteLine(" Sample tasks will be generated.");
 			Console.WriteLine();
 			TextColorChanger.ChangeTextColorToWhite();
-			Console.WriteLine("Press any key to continue...");
+			Console.WriteLine(" Press any key to continue...");
 			Console.ReadKey();
 		}
 

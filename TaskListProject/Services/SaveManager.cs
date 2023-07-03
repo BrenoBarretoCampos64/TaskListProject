@@ -5,7 +5,9 @@ namespace TaskListProject.Services
 {
     internal class SaveManager
 	{
-		public void SaveData(TaskList taskList)
+        private string DatabaseFileName = "task-database.json";
+
+        public void SaveData(TaskList taskList)
 		{
 			string path = GetSaveFileDirectory();
 			var tasksToBeSaved = taskList.GetTasks();
@@ -24,9 +26,8 @@ namespace TaskListProject.Services
 
 		public string GetSaveFileDirectory()
 		{
-            string databaseFileName = "task-database.json";
             string currentApplicationDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            return currentApplicationDirectory + databaseFileName;
+            return currentApplicationDirectory + DatabaseFileName;
         }
 	}
 }
